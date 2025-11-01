@@ -1,7 +1,5 @@
-#include <iostream>     // used for input and output
+#include <iostream>     
 using namespace std;
-
-// This class represents a single node in the linked list
 class Node {
 public:
     int data;           // stores the value inside the node
@@ -14,7 +12,6 @@ public:
     }
 };
 
-// This class represents the full linked list
 class LinkedList {
 public:
     Node* head;         // pointer to the first node (head) of the linked list
@@ -106,9 +103,8 @@ int main() {
     Node* mid2 = list2.findMiddle(); // find the middle node (second middle if even)
     cout << "Middle node and onwards: ";
     list2.display(mid2);             // print nodes from the middle to the end
-
-    // Explanation message for second picture
     cout << "Since the list has two middle nodes with values 3 and 4, we return the second one." << endl;
 
-    return 0;   // program ends successfully
+    return 0;   
 }
+
