@@ -1,110 +1,107 @@
-#include <iostream>     
+#include <iostream>
 using namespace std;
+
 class Node {
 public:
-    int data;           // stores the value inside the node
-    Node* next;         // pointer to the next node in the list
+    int data;
+    Node* next;
 
-    // Constructor to set data and initialize next as NULL
     Node(int val) {
         data = val;
         next = NULL;
     }
 };
 
-class LinkedList {
-public:
-    Node* head;         // pointer to the first node (head) of the linked list
-
-    // Constructor initializes the head to NULL (empty list)
-    LinkedList() {
-        head = NULL;
-    }
-
-    // Function to insert a new node at the end of the list
-    void insert(int val) {
-        Node* newNode = new Node(val);  // create a new node with given value
-
-        // If the list is empty, newNode becomes the head
-        if (head == NULL) {
-            head = newNode;
-        }
-        else {
-            // Otherwise, go to the last node
-            Node* temp = head;
-            while (temp->next != NULL) {  // move till last node
-                temp = temp->next;
-            }
-            temp->next = newNode;         // link new node at the end
-        }
-    }
-
-    // Function to print all nodes starting from the given node
-    void display(Node* node) {
-        while (node != NULL) {             // loop until the list ends
-            cout << node->data << " ";     // print data of each node
-            node = node->next;             // move to next node
-        }
-        cout << endl;
-    }
-
-    // Function to find and return the middle node of the linked list
-    Node* findMiddle() {
-        Node* first = head;     // pointer that moves one step at a time
-        Node* second = head;    // pointer that moves two steps at a time
-
-        // Traverse the list until 'second' reaches the end
-        while (second != NULL && second->next != NULL) {
-            first = first->next;           // move by 1 node
-            second = second->next->next;   // move by 2 nodes
-        }
-
-        // When 'second' reaches end, 'first' will be at the middle
-        return first;
-    }
-};
-
 int main() {
-
-    // Example 1: Odd number of nodes (1 → 2 → 3 → 4 → 5)
     cout << "Example 1:" << endl;
-    LinkedList list1;                // create first linked list
-    list1.insert(1);                 // add nodes one by one
-    list1.insert(2);
-    list1.insert(3);
-    list1.insert(4);
-    list1.insert(5);
 
+    Node* head1 = NULL;
+    Node* ptr;
+    Node* pptr;
+
+    // create first linked list: (1 → 2 → 3 → 4 → 5)
+    for (int i = 1; i <= 5; i++) {
+        Node* newNode = new Node(i);
+
+        if (head1 == NULL)
+            head1 = newNode;
+        else {
+            pptr = head1;
+            while (pptr->next != NULL)
+                pptr = pptr->next;
+            pptr->next = newNode;
+        }
+    }
+
+    // To print the linked list
     cout << "Linked List: ";
-    list1.display(list1.head);       // display full linked list
+    ptr = head1;
+    while (ptr != NULL) {
+        cout << ptr->data << " ";
+        ptr = ptr->next;
+    }
+    cout << endl;
 
-    Node* mid1 = list1.findMiddle(); // find the middle node
+    // To find the middle node using two pointers
+    ptr = head1;
+    pptr = head1;
+    while (pptr != NULL && pptr->next != NULL) {
+        ptr = ptr->next;
+        pptr = pptr->next->next;
+    }
+
+    // To print the middle node and then onwards
     cout << "Middle node and onwards: ";
-    list1.display(mid1);             // display from the middle node till end
+    while (ptr != NULL) {
+        cout << ptr->data << " ";
+        ptr = ptr->next;
+    }
+    cout << endl;
+    cout << "Middle node is: 3" << endl << endl;
 
-    // Explanation message for first picture
-    cout << "The middle node of the list is 3." << endl;
 
-    cout << endl;                    // line break between examples
-
-    // Example 2: Even number of nodes (1 → 2 → 3 → 4 → 5 → 6)
     cout << "Example 2:" << endl;
-    LinkedList list2;                // create second linked list
-    list2.insert(1);
-    list2.insert(2);
-    list2.insert(3);
-    list2.insert(4);
-    list2.insert(5);
-    list2.insert(6);
+    Node* head2 = NULL;
 
+    // create second linked list: (1 → 2 → 3 → 4 → 5 → 6)
+    for (int i = 1; i <= 6; i++) {
+        Node* newNode = new Node(i);
+
+        if (head2 == NULL)
+            head2 = newNode;
+        else {
+            pptr = head2;
+            while (pptr->next != NULL)
+                pptr = pptr->next;
+            pptr->next = newNode;
+        }
+    }
+
+    // To print the linked list
     cout << "Linked List: ";
-    list2.display(list2.head);       // display full list
+    ptr = head2;
+    while (ptr != NULL) {
+        cout << ptr->data << " ";
+        ptr = ptr->next;
+    }
+    cout << endl;
 
-    Node* mid2 = list2.findMiddle(); // find the middle node (second middle if even)
+    // To find the middle node for the even number of nodes in the given list(1->2->3->4->5->6)
+    ptr = head2;
+    pptr = head2;
+    while (pptr != NULL && pptr->next != NULL) {
+        ptr = ptr->next;
+        pptr = pptr->next->next;
+    }
+
     cout << "Middle node and onwards: ";
-    list2.display(mid2);             // print nodes from the middle to the end
-    cout << "Since the list has two middle nodes with values 3 and 4, we return the second one." << endl;
+    while (ptr != NULL) {
+        cout << ptr->data << " ";
+        ptr = ptr->next;
+    }
+    cout << endl;
+    cout << "Since the list has two middle nodes (3 and 4), we return the second one." << endl;
 
-    return 0;   
+    return 0;
 }
 
