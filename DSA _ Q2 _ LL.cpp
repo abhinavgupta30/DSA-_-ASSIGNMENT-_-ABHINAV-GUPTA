@@ -1,18 +1,20 @@
 #include <iostream>
 using namespace std;
-
-class Node {
+class Node
+{
 public:
     int data;
     Node* next;
 
-    Node(int val) {
+    Node(int val)
+   {
         data = val;
         next = NULL;
     }
 };
 
-int main() {
+int main() 
+{
     cout << "Example 1:" << endl;
 
     Node* head1 = NULL;
@@ -20,7 +22,8 @@ int main() {
     Node* pptr;
 
     // create first linked list: (1 → 2 → 3 → 4 → 5)
-    for (int i = 1; i <= 5; i++) {
+    for (int i = 1; i <= 5; i++)
+        {
         Node* newNode = new Node(i);
 
         if (head1 == NULL)
@@ -36,7 +39,8 @@ int main() {
     // To print the linked list
     cout << "Linked List: ";
     ptr = head1;
-    while (ptr != NULL) {
+    while (ptr != NULL)
+        {
         cout << ptr->data << " ";
         ptr = ptr->next;
     }
@@ -45,7 +49,8 @@ int main() {
     // To find the middle node using two pointers
     ptr = head1;
     pptr = head1;
-    while (pptr != NULL && pptr->next != NULL) {
+    while (pptr != NULL && pptr->next != NULL)
+        {
         ptr = ptr->next;
         pptr = pptr->next->next;
     }
@@ -64,7 +69,8 @@ int main() {
     Node* head2 = NULL;
 
     // create second linked list: (1 → 2 → 3 → 4 → 5 → 6)
-    for (int i = 1; i <= 6; i++) {
+    for (int i = 1; i <= 6; i++)
+        {
         Node* newNode = new Node(i);
 
         if (head2 == NULL)
@@ -89,13 +95,15 @@ int main() {
     // To find the middle node for the even number of nodes in the given list(1->2->3->4->5->6)
     ptr = head2;
     pptr = head2;
-    while (pptr != NULL && pptr->next != NULL) {
+    while (pptr != NULL && pptr->next != NULL) 
+    {
         ptr = ptr->next;
         pptr = pptr->next->next;
     }
 
     cout << "Middle node and onwards: ";
-    while (ptr != NULL) {
+    while (ptr != NULL) 
+    {
         cout << ptr->data << " ";
         ptr = ptr->next;
     }
@@ -104,4 +112,5 @@ int main() {
 
     return 0;
 }
+
 
