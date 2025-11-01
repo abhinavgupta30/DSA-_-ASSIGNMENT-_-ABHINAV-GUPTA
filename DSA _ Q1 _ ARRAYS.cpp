@@ -1,10 +1,6 @@
-// Two Sum Problem using Class and Basic DSA Concepts
-// Link: https://leetcode.com/problems/two-sum/
-
-#include <iostream>   // For input and output
+#include <iostream>   
 using namespace std;
 
-// Define a class named TwoSum
 class TwoSum {
 public:
     // Function to find indices of two numbers that add up to the target
@@ -23,29 +19,26 @@ public:
                     cout << "Indices: [" << i << ", " << j << "]" << endl;
                     cout << "Numbers: " << nums[i] << " + " << nums[j]
                          << " = " << target << endl;
-
-                    // Exit the function after finding one correct pair
                     return;
                 }
             }
         }
 
-        // If no pair found, display message
+        // If no pair found write this
         cout << "No pair found that adds up to target!" << endl;
     }
 };
 
-// Main function - execution starts here
 int main() {
 
     // Step 1: Declare and initialize the array
-    int nums[] = {2, 7, 11, 15};  // Given array of numbers
+    int nums[] = {2, 7, 11, 15};  // Given array of numbers from the question
 
     // Step 2: Store the target value we need to reach
     int target = 9;  // Target sum value
 
     // Step 3: Find size of the array
-    int n = 4;  // Number of elements in the array
+    int n = 4; 
 
     // Step 4: Create an object of the TwoSum class
     TwoSum obj;
@@ -59,7 +52,6 @@ int main() {
 
     // Step 6: Call the class function to find indices
     obj.findIndices(nums, n, target);
-
-    // Step 7: End of program
     return 0;
 }
+
